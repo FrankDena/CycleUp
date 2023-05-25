@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Inserisci una recensione</title>
+	</head>
+	
+	<body>
+		<div th:if="${review}">
+			<h1 th:text="${review.title}">Titolo Recensione</h1>
+			<div>Testo: <span th:text="${review.text}">Testo</span></div>
+			<div>Valutation: <span th:text="${review.valutation}">Valutation</span></div>
+			<div th:if="${review.username}" >Inserita da: <span th:text="${review.username}">Utente</span></div>
+		</div>
+	</body>
+</html>

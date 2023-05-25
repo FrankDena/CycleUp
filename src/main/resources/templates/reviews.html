@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>New Review</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+	<div th:if="${reviews.isEmpty()}">Non ci sono recensioni nel sistema</div>
+		<ul>
+			<li class="operation-col" th:each="review:${reviews}">
+				<a th:href="@{'/reviews'+'/'+${review.id}}"
+				th:text="${review.title}+'('+${review.valutation}+')'">Recensione (valutazione)</a>
+			</li>
+		</ul>
+
+</body>
+
+</html>
