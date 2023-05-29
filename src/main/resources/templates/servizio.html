@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Inserisci una recensione</title>
+	</head>
+	
+	<body>
+		<div th:if="${servizio}">
+			<h1 th:text="${servizio.title}">Titolo servizio</h1>
+			<div>Testo: <span th:text="${servizio.description}">Descrizione</span></div>
+			<div>Valutation: <span th:text="${servizio.price}">Prezzo</span></div>
+		</div>
+	</body>
+</html>

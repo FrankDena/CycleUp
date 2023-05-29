@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>New Review</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+	<div th:if="${servizi.isEmpty()}">Non ci sono servizi nel sistema</div>
+		<ul>
+			<li class="operation-col" th:each="servizio:${servizi}">
+				<a th:href="@{'/servizi'+'/'+${servizio.id}}"
+				th:text="${servizio.title}+'('+${servizio.price}+')'">Servizio (prezzo)</a>
+			</li>
+		</ul>
+
+</body>
+
+</html>

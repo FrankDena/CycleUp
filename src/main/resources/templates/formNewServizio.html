@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>New Review</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+	<h1>Aggiungi una recensione</h1>
+	<form class="form" th:action="@{/servizi}" method="post" th:object="${servizio}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+		<div>
+			Titolo: <span> <input class="roundInput" required type="text" th:field="${servizio.title}"></span>
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+		</div>
+		<div>
+			Descrizione: <span> <input class="roundInput" required type="text" th:field="${servizio.description}"></span>
+			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+		</div>
+		<div>
+			Prezzo: <span> <input class="roundInput" required type="text"
+					th:field="${servizio.price}"></span>
+			<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+		</div>
+		<div>
+			<span> <button class="hero-btn" type="submit">Conferma</button></span>
+		</div>
+	</form>
+	</div>
+
+</body>
+
+</html>
