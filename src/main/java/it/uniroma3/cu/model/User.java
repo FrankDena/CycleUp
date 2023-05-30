@@ -1,11 +1,13 @@
 package it.uniroma3.cu.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,12 +18,21 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	
+	@OneToMany
+	private List<Prenotazione> prenotazioni;
 	
 	private String name;
 	private String surname;
 	private String email;
 	
+	
+	
+	public List<Prenotazione> getPrenotazioni() {
+		return prenotazioni;
+	}
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
+	}
 	public Long getId() {
 		return id;
 	}

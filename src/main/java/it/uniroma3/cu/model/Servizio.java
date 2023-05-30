@@ -1,11 +1,13 @@
 package it.uniroma3.cu.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -22,8 +24,19 @@ public class Servizio {
 	
 	private Float price;
 
+	@ManyToMany (mappedBy = "servizi" )
+	private List<Prenotazione> prenotazioni;
 	
 	
+	
+	public List<Prenotazione> getPrenotazioni() {
+		return prenotazioni;
+	}
+
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
+	}
+
 	public Long getId() {
 		return id;
 	}

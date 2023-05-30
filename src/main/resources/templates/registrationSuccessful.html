@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>Registrazione Avvenuta</title>
+</head>
+
+<body>
+		
+		<h1>Congratulazioni ti sei registrato</h1>
+		<div>
+			Nome: <span th:text="${user.name}"></span>
+		</div>
+		<div>
+			Cognome: <span th:text="${user.surname}"></span>
+		</div>
+		<div>
+			Email: <span th:text="${user.email}"></span>
+		</div>
+		<a href="/login" class="hero-btn">Esegui il login</a>
+
+	
+</body>
+
+</html>
