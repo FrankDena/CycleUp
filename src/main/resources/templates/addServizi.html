@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Aggiungi Servizi</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	</head>
+	<body>
+	
+		<h1>Seleziona i servizi da aggiungere:</h1>
+	
+		<h2>Servizi selezionati:</h2>
+		<h5>(seleziona per rimuovere)</h5>
+		<ul>
+			<li  th:each="servizio:${serviziScelti}">
+				<a th:href="@{'/removeServizioFromPrenotazione' + '/' + ${servizio.id} + '/' +${prenotazione.id}}"
+				th:text="${servizio.title}+ ' '+${servizio.price}">Nome Prezzo</a>
+			</li>
+		</ul><br>
+		<h2>Servizi non selezionati:</h2>
+		<h5>(seleziona per aggiungere)</h5>
+		<ul>
+			<li  th:each="servizio:${serviziNonScelti}">
+				<a th:href="@{'/setServizioToPrenotazione' + '/' + ${servizio.id} + '/' +${prenotazione.id}}"
+				th:text="${servizio.title}+ ' '+${servizio.price}">Nome Prezzo</a>
+			</li>
+		</ul><br>
+		<span><a th:text="FINE" th:href="@{'/prenotazioni'+'/'+${prenotazione.id}}"></a></span>
+	
+	</body>
+</html>

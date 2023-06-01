@@ -39,6 +39,10 @@ public class Prenotazione {
 	public void setServizi(List<Servizio> servizi) {
 		this.servizi = servizi;
 	}
+	
+	public void addServizio(Servizio servizio) {
+		this.servizi.add(servizio);
+	}
 
 	public User getCliente() {
 		return cliente;

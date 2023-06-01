@@ -36,6 +36,10 @@ public class Servizio {
 	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
 	}
+	
+	public void addPrenotazione(Prenotazione prenotazione) {
+		this.prenotazioni.add(prenotazione);
+	}
 
 	public Long getId() {
 		return id;

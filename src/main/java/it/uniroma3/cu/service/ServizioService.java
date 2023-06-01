@@ -1,9 +1,11 @@
 package it.uniroma3.cu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import it.uniroma3.cu.model.Prenotazione;
 import it.uniroma3.cu.model.Servizio;
 
 import it.uniroma3.cu.repository.ServizioRepository;
@@ -32,6 +34,10 @@ public class ServizioService {
 	
 	public boolean existsByTitleAndDescriptionAndPrice(String title, String description, Float price) {
 		return this.servizioRepository.existsByTitleAndDescriptionAndPrice(title,description,price);
+	}
+	
+	public List<Servizio> findAllByPrenotazioniNotContaining(Prenotazione prenotazione) {
+		return  this.servizioRepository.findAllByPrenotazioniNotContaining(prenotazione);
 	}
 	
 }
