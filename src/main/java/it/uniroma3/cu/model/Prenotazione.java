@@ -1,13 +1,16 @@
 package it.uniroma3.cu.model;
 
 import java.util.List;
+import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Prenotazione {
@@ -23,6 +26,10 @@ public class Prenotazione {
 	private User cliente;
 	
 	private String modelloBici;
+	
+	@OneToOne (mappedBy = "prenotazione")
+	private Prestazione prestazione;
+	
 
 	public Long getId() {
 		return id;
@@ -30,6 +37,16 @@ public class Prenotazione {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	
+	
+	public Prestazione getPrestazione() {
+		return prestazione;
+	}
+
+	public void setPrestazione(Prestazione prestazione) {
+		this.prestazione = prestazione;
 	}
 
 	public List<Servizio> getServizi() {
@@ -58,6 +75,24 @@ public class Prenotazione {
 
 	public void setModelloBici(String modelloBici) {
 		this.modelloBici = modelloBici;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cliente, modelloBici, servizi);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Prenotazione other = (Prenotazione) obj;
+		return Objects.equals(cliente, other.cliente) && Objects.equals(modelloBici, other.modelloBici)
+				&& Objects.equals(servizi, other.servizi);
 	}
 	
 	

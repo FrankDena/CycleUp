@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>New Prestazione</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+	<h1>Aggiungi una prestazione</h1>
+	<form th:action="@{/prestazioni}" method="post" th:object="${prestazione}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+		<div>
+			Prezzo finale: <span> <input required type="text" th:field="${prestazione.prezzoFinale}"></span>
+			<span th:if="${#fields.hasErrors('prezzoFinale')}" th:errors="*{prezzoFinale}"></span>
+		</div>
+		<div>
+			Prezzo ricambi: <span> <input required type="text" th:field="${prestazione.prezzoRicambi}"></span>
+			<span th:if="${#fields.hasErrors('prezzoRicambi')}" th:errors="*{prezzoRicambi}"></span>
+		</div>
+		<div>
+			Ore di manodopera: <span> <input required type="text" th:field="${prestazione.oreManodopera}"></span>
+			<span th:if="${#fields.hasErrors('oreManodopera')}" th:errors="*{oreManodopera}"></span>
+		</div>
+		<div>
+			<span> <button type="submit">Conferma</button></span>
+		</div>
+	</form>
+	</div>
+
+</body>
+
+</html>

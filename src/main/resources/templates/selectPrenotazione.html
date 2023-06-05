@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Seleziona Prenotazione</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+	<div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni nel sistema</div>
+		<ul>
+			<li th:each="prenotazione:${prenotazioni}">
+				<a th:href="@{'/setPrenotazioneToPrestazione'+'/'+${prenotazione.id}+'/'+${prestazione.id}}"
+				th:text="${prenotazione.modelloBici} + ' ' + ${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Prenotazione)</a>
+			</li>
+		</ul>
+
+</body>
+
+</html>
