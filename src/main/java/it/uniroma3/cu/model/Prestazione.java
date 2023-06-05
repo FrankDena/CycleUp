@@ -1,5 +1,6 @@
 package it.uniroma3.cu.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -28,8 +29,20 @@ public class Prestazione {
 	
 	private Integer oreManodopera;
 	
+	private LocalDate dataCompletamento;
+	
 	@Column (nullable = true)
 	private String note;
+
+	
+	
+	public LocalDate getDataCompletamento() {
+		return dataCompletamento;
+	}
+
+	public void setDataCompletamento(LocalDate dataCompletamento) {
+		this.dataCompletamento = dataCompletamento;
+	}
 
 	public Long getId() {
 		return id;

@@ -1,5 +1,6 @@
 package it.uniroma3.cu.model;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,6 +31,18 @@ public class Prenotazione {
 	@OneToOne (mappedBy = "prenotazione")
 	private Prestazione prestazione;
 	
+	
+	private LocalDate dataInserimento;
+
+	
+	
+	public LocalDate getDataInserimento() {
+		return dataInserimento;
+	}
+
+	public void setDataInserimento(LocalDate dataInserimento) {
+		this.dataInserimento = dataInserimento;
+	}
 
 	public Long getId() {
 		return id;

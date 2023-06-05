@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Seleziona Prestazione</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<h1>Seleziona la prestazione a cui aggiungere la nuova recensione:</h1>
+	<div th:if="${prestazioni.isEmpty()}">Non ci sono prestazioni nel sistema</div>
+		<ul>
+			<li th:each="prestazione:${prestazioni}">
+				<a th:href="@{'/setPrestazioneToRecensione'+'/'+${prestazione.id}+'/'+${recensione.id}}"
+				th:text="${prestazione.prenotazione.modelloBici} + ' ' + ${prestazione.prezzoFinale} + '€'">Prestazione</a>
+			</li>
+		</ul>
+
+</body>
+
+</html>

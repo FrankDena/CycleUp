@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import it.uniroma3.cu.model.Prenotazione;
+import it.uniroma3.cu.model.Prestazione;
 import it.uniroma3.cu.model.Review;
+import it.uniroma3.cu.service.PrestazioneService;
 import it.uniroma3.cu.service.ReviewService;
 import jakarta.validation.Valid;
 
@@ -20,7 +24,7 @@ public class ReviewController {
 	//@Autowired ReviewRepository reviewRepository;
 	@Autowired ReviewValidator reviewValidator;
 	@Autowired ReviewService reviewService;
-	
+	@Autowired PrestazioneService prestazioneService;
 	
 	@GetMapping("/formNewReview")
 	public String formNewReviewDefault(Model model) {
@@ -30,17 +34,39 @@ public class ReviewController {
 	}
 	
 	@PostMapping("/reviews")
-	public String newReviewDefault(@Valid @ModelAttribute("review") Review review,
+	public ModelAndView newReviewDefault(@Valid @ModelAttribute("review") Review review,
 			BindingResult bindingResult ,Model model) {
 		this.reviewValidator.validate(review, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.reviewService.saveReview(review);
 			model.addAttribute("review",review);
-			return "review.html";
+			return new ModelAndView("redirect:/selectPrestazione/"+review.getId());
 		} else {
 			//model.addAttribute("messaggioErrore","Questa review esiste gia'");
-			return "formNewReview.html";
+			return new ModelAndView("formNewReview.html");
 		}
+	}
+	
+	@GetMapping("/selectPrestazione/{id}")
+	public String selectPrestazione(@PathVariable("id")Long id, Model model) {
+		model.addAttribute("prestazioni",this.prestazioneService.findAll());
+		model.addAttribute("recensione",this.reviewService.findById(id));
+		return "selectPrestazione.html";
+	}
+	
+	@GetMapping("/setPrestazioneToRecensione/{idPres}/{idRec}")
+	public String setPrestazioneToRecensione(@PathVariable("idPres")Long idPres, @PathVariable("idRec")Long idRec, Model model) {
+		Prestazione prestazione = this.prestazioneService.findById(idPres);
+		Review recensione = this.reviewService.findById(idRec);
+		
+		prestazione.setRecensione(recensione);
+		recensione.setPrestazione(prestazione);
+		
+		this.reviewService.saveReview(recensione);
+		this.prestazioneService.savePrestazione(prestazione);
+		
+		model.addAttribute("review",recensione);
+		return "review.html";
 	}
 	
 	@GetMapping("/reviews/{id}")

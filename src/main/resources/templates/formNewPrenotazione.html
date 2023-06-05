@@ -10,16 +10,20 @@
 <body>
 
 	<h1>Aggiungi una prenotazione</h1>
-	<form class="form" th:action="@{/prenotazioni}" method="post" th:object="${prenotazione}">
+	<form th:action="@{/prenotazioni}" method="post" th:object="${prenotazione}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
 		<div>
-			Modello bici: <span> <input class="roundInput" required type="text" th:field="${prenotazione.modelloBici}"></span>
+			Modello bici: <span> <input required type="text" th:field="${prenotazione.modelloBici}"></span>
 			<span th:if="${#fields.hasErrors('modelloBici')}" th:errors="*{modelloBici}"></span>
 		</div>
 		<div>
-			<span> <button class="hero-btn" type="submit">Conferma</button></span>
+			Data di inserimento: <span> <input required type="date" th:field="${prenotazione.dataInserimento}"></span>
+			<span th:if="${#fields.hasErrors('dataInserimento')}" th:errors="*{dataInserimento}"></span>
+		</div>
+		<div>
+			<span> <button type="submit">Conferma</button></span>
 		</div>
 	</form>
 	</div>

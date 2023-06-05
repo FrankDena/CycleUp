@@ -9,10 +9,11 @@
 <body>
 	<div th:if="${prenotazione}">
 		<h1 th:text="'Prenotazione ' + ${prenotazione.id}">Prenotazione</h1>
-		<div>Cliente: <span th:text="${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Nome
-				Cognome</span></div>
-		<div th:if="${prenotazione.servizi.isEmpty()}">Non ci sono servizi per questa prenotazione</div>
+		<div>Cliente: <span th:text="${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Nome Cognome</span></div>
+		<div>Bici: <span th:text="${prenotazione.modelloBici}">Bici </span></div>
+		<div>Inserita in data: <span th:text="${prenotazione.dataInserimento}">Data </span></div>
 		<h3>Servizi scelti:</h3>
+		<div th:if="${prenotazione.servizi.isEmpty()}">Non ci sono servizi per questa prenotazione</div>
 		<ul>
 			<li th:each="servizio:${prenotazione.servizi}"
 				th:text="${servizio.title}+'('+${servizio.price}+')'">Servizio (prezzo)

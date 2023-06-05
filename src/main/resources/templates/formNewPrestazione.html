@@ -27,6 +27,10 @@
 			<span th:if="${#fields.hasErrors('oreManodopera')}" th:errors="*{oreManodopera}"></span>
 		</div>
 		<div>
+			Data di completamento: <span> <input required type="date" th:field="${prestazione.dataCompletamento}"></span>
+			<span th:if="${#fields.hasErrors('oreManodopera')}" th:errors="*{oreManodopera}"></span>
+		</div>
+		<div>
 			<span> <button type="submit">Conferma</button></span>
 		</div>
 	</form>
