@@ -52,13 +52,13 @@ public class PrestazioneController {
 		return "prestazione.html";
 	}
 	
-	@GetMapping("/formNewPrestazione")
+	@GetMapping("/admin/formNewPrestazione")
 	public String formNewPrestazione(Model model) {
 		model.addAttribute("prestazione", new Prestazione());
-		return "formNewPrestazione.html";
+		return "admin/formNewPrestazione.html";
 	}
 	
-	@PostMapping("/prestazioni")
+	@PostMapping("/admin/prestazioni")
 	public ModelAndView newPrestazione(@Valid @ModelAttribute("prestazione") Prestazione prestazione,
 			BindingResult bindingResult , Model model) {
 		this.prestazioneValidator.validate(prestazione, bindingResult);
@@ -67,7 +67,7 @@ public class PrestazioneController {
 			model.addAttribute("prestazione",prestazione);
 			return new ModelAndView("redirect:/selectPrenotazione/"+prestazione.getId());
 		} else {
-			return new ModelAndView("formNewPrestazione.html");
+			return new ModelAndView("admin/formNewPrestazione.html");
 		}
 	}
 	

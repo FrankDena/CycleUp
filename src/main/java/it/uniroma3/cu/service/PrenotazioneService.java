@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.cu.model.Prenotazione;
+import it.uniroma3.cu.model.User;
 import it.uniroma3.cu.repository.PrenotazioneRepository;
 
 
@@ -29,6 +30,6 @@ public class PrenotazioneService {
 		this.prenotazioneRepository.deleteById(id);
 	}
 	
-	
+
 	
 }

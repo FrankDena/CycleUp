@@ -7,10 +7,14 @@
 </head>
 
 <body>
-	<h1>UTENTE NON REGISTRATO</h1>
-	<h1>Scegli quale operazione sulle effettuare</h1>
+	<h1>UTENTE REGISTRATO</h1>
+	<h1>Scegli quale operazione effettuare</h1>
+	<a href="/formNewReview">Inserisci una recensione</a>
 	<a href="/reviews">Visualizza tutte le recensioni</a>
 	<a href="/servizi">Visualizza tutti i servizi</a>
+	<a href="/formNewPrenotazione">Inserisci una prenotazione</a>
+	<a href="/prenotazioni">Visualizza tutte le prenotazioni</a>
+	<a href="/prestazioni">Visualizza tutte le prestazioni</a>
 	<div th:if="${user}">
 		<span th:text="${user.username}"></span>
 		<a href="/logout">LOGOUT</a>

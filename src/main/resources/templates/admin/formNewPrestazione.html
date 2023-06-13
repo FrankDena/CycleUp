@@ -10,7 +10,7 @@
 <body>
 
 	<h1>Aggiungi una prestazione</h1>
-	<form th:action="@{/prestazioni}" method="post" th:object="${prestazione}">
+	<form th:action="@{/admin/prestazioni}" method="post" th:object="${prestazione}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>

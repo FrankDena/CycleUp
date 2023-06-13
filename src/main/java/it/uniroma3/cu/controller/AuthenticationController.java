@@ -48,36 +48,17 @@ public class AuthenticationController {
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 				model.addAttribute("user",(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-				return "admin/indexAdmin.html";
+				return "admin/index.html";
 			}
 			if (credentials.getRole().equals(Credentials.DEFAULT_ROLE)) {
 				model.addAttribute("user",(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-				return "index.html";
+				return "indexUser.html";
 			}
 		}
 		return "index.html";
 	}
 	
-	/*@GetMapping(value = "/indexMovie")
-	public String indexMovie(Model model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication instanceof AnonymousAuthenticationToken) {
-			return "indexMovie.html";
-		}
-		else {
-			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-				model.addAttribute("user",(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-				return "admin/indexMovie.html";
-			}
-			if (credentials.getRole().equals(Credentials.DEFAULT_ROLE)) {
-				model.addAttribute("user",(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-				return "indexMovie.html";
-			}
-		}
-		return "indexMovie.html";
-	}*/
+
 	
 	@GetMapping(value = "/success")
 	public String defaultAfterLogin(Model model) {
@@ -85,11 +66,11 @@ public class AuthenticationController {
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("user",(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-			return "admin/indexAdmin.html";
+			return "admin/index.html";
 		}
 		if (credentials.getRole().equals(Credentials.DEFAULT_ROLE)) {
 			model.addAttribute("user",(UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-			return "index.html";
+			return "indexUser.html";
 		}
 		return "index.html";
 	}

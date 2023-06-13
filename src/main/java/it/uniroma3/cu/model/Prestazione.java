@@ -29,6 +29,7 @@ public class Prestazione {
 	
 	private Integer oreManodopera;
 	
+	
 	private LocalDate dataCompletamento;
 	
 	@Column (nullable = true)
@@ -36,6 +37,11 @@ public class Prestazione {
 
 	
 	
+	
+	
+	
+
+
 	public LocalDate getDataCompletamento() {
 		return dataCompletamento;
 	}

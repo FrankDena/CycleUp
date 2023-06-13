@@ -20,13 +20,13 @@ public class ServizioController {
 	@Autowired ServizioValidator servizioValidator;
 	@Autowired ServizioService servizioService;
 	
-	@GetMapping("/formNewServizio")
+	@GetMapping("/admin/formNewServizio")
 	public String formNewServizio(Model model) {
 		model.addAttribute("servizio", new Servizio());
-		return "formNewServizio.html";
+		return "admin/formNewServizio.html";
 	}
 	
-	@PostMapping("/servizi")
+	@PostMapping("/admin/servizi")
 	public String newServizio(@Valid @ModelAttribute("servizio") Servizio servizio,
 			BindingResult bindingResult ,Model model) {
 		this.servizioValidator.validate(servizio, bindingResult);
@@ -36,7 +36,7 @@ public class ServizioController {
 			return "servizio.html";
 		} else {
 			//model.addAttribute("messaggioErrore","Questa review esiste gia'");
-			return "formNewServizio.html";
+			return "admin/formNewServizio.html";
 		}
 	}
 	

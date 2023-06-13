@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin HomePage</title>
+</head>
+
+<body>
+	<h1>ADMIN INDEX</h1>
+	<h1>Scegli quale operazione effettuare</h1>
+	<a href="/formNewReview">Inserisci una recensione</a>
+	<a href="/reviews">Visualizza tutte le recensioni</a>
+	<a href="/admin/formNewServizio">Inserisci un servizio</a>
+	<a href="/servizi">Visualizza tutti i servizi</a>
+	<a href="/formNewPrenotazione">Inserisci una prenotazione</a>
+	<a href="/prenotazioni">Visualizza tutte le prenotazioni</a>
+	<a href="/admin/formNewPrestazione">Inserisci una prestazione</a>
+	<a href="/prestazioni">Visualizza tutte le prestazioni</a>
+	<div th:if="${user}">
+		<span th:text="${user.username}"></span>
+		<a href="/logout">LOGOUT</a>
+	</div>
+	<div th:unless="${user}">
+		<a href="/login">LOGIN</a>
+	</div>
+</body>
+
+</html>
