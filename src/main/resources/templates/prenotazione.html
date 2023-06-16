@@ -7,6 +7,7 @@
 </head>
 
 <body>
+		
 	<div th:if="${prenotazione}">
 		<h1 th:text="'Prenotazione ' + ${prenotazione.id}">Prenotazione</h1>
 		<div>Cliente: <span th:text="${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Nome Cognome</span></div>

@@ -4,16 +4,16 @@
 <head>
 	<title>Prenotazioni</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<link rel = "stylesheet" href="/css/style.css" />
 </head>
 
 <body>
-
+	<center><titolo>Prenotazioni</titolo></center>
 	<div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni nel sistema</div>
 		<ul>
 			<li class="operation-col" th:each="prenotazione:${prenotazioni}">
 				<a th:href="@{'/prenotazioni'+'/'+${prenotazione.id}}"
-				th:text="${prenotazione.modelloBici} + ' ' + ${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Prenotazione)</a>
+				th:text="${prenotazione.modelloBici} + ' | ' + ${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Prenotazione)</a>
 			</li>
 		</ul>
 

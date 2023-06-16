@@ -122,5 +122,4 @@ public class PrenotazioneController {
 		model.addAttribute("prenotazioni",this.prenotazioneService.findAll());
 		return "prenotazioni.html";
 	}
-	
 }
