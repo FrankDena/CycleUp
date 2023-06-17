@@ -1,34 +1,29 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="style2.css">
 </head>
-
 <body>
-	
-		<form th:action="@{/login}" method="post">
-			<div>
-				<input name="username" type="text" placeholder="Username" required>
-			</div>
-			<div>
-				<input name="password" type="password" placeholder="Password" required>
-			</div>
-			<div>
-				<span th:if="${param.error != null}">Username o password errati</span>
-			</div>
-
-			<div>
-				<input type="submit" value="Login">
-			</div>
-
-			<div>
-				<a th:href="@{/register}" th:text="Registrati">Registrati</a>
-			</div>
-		</form>
-	</div>
-
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <form th:action="@{/login}" method="post">
+        <input name="username" type="text" placeholder="Username" required>
+        <input name="password" type="password" placeholder="Password" required>
+        <div>
+          <span th:if="${param.error != null}">Username o password errati</span>
+		</div>
+        <input type="submit" class="button" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Non sei registrato?
+         <a th:href="@{/register}" th:text="Registrati">Registrati</a>
+        </span>
+      </div>
+    </div>
 </body>
-
 </html>

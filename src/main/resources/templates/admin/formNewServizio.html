@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>New Review</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Service</title>
+  <link rel="stylesheet" href="/style4.css">
 </head>
-
-<body>
-
-	<h1>Aggiungi una recensione</h1>
-	<form class="form" th:action="@{/admin/servizi}" method="post" th:object="${servizio}">
-		<div th:if="${#fields.hasGlobalErrors()}">
+<body id="pres">
+  <div class="container">
+    <div class="login form">
+      <header>Aggiungi un servizio</header>
+    <form th:action="@{/admin/servizi}" method="post" th:object="${servizio}">
+        <div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
-		<div>
+        <div>
 			Titolo: <span> <input class="roundInput" required type="text" th:field="${servizio.title}"></span>
 			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
 		</div>
@@ -22,17 +22,14 @@
 			Descrizione: <span> <input class="roundInput" required type="text" th:field="${servizio.description}"></span>
 			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 		</div>
-		<div>
+       <div>
 			Prezzo: <span> <input class="roundInput" required type="text"
 					th:field="${servizio.price}"></span>
 			<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
 		</div>
-		<div>
-			<span> <button class="hero-btn" type="submit">Conferma</button></span>
-		</div>
-	</form>
-	</div>
-
+        <input type="submit" class="button" value="Conferma">
+      </form>
+    </div>
+  </div>
 </body>
-
 </html>

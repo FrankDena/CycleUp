@@ -1,6 +1,7 @@
 package it.uniroma3.cu.authentication;
 
 import static it.uniroma3.cu.model.Credentials.ADMIN_ROLE;
+
 import static it.uniroma3.cu.model.Credentials.DEFAULT_ROLE;
 
 import javax.sql.DataSource;
@@ -38,7 +39,7 @@ public class AuthConfiguration {
 		.csrf().and().cors().disable()
 		.authorizeHttpRequests()
 		.requestMatchers(HttpMethod.GET, "/**","/index", "/login", "/register", "/servizi","/servizi/**" ,"/servizio", "/reviews", "/review", "/reviews/**").permitAll()
-		.requestMatchers(HttpMethod.POST, "/login", "/register", "/searchMovies").permitAll()
+		.requestMatchers(HttpMethod.POST, "/**","/login", "/register").permitAll()
 		.requestMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 		.requestMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
 		.anyRequest().authenticated()

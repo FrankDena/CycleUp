@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>New Prenotazione</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Prenotation</title>
+  <link rel="stylesheet" href="style3.css">
 </head>
-
-<body>
-
-	<h1>Aggiungi una prenotazione</h1>
-	<form th:action="@{/prenotazioni}" method="post" th:object="${prenotazione}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+<body id="pren">
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Aggiungi una prenotazione</header>
+      <form th:action="@{/prenotazioni}" method="post" th:object="${prenotazione}">
+        <div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
 		</div>
-		<div>
+        <div>
 			Modello bici: <span> <input required type="text" th:field="${prenotazione.modelloBici}"></span>
-			<span th:if="${#fields.hasErrors('modelloBici')}" th:errors="*{modelloBici}"></span>
+			<span th:if="${#fields.hasErrors('modelloBici')}" th:errors="*{modelloBici}">errore</span>
 		</div>
 		<div>
 			Data di inserimento: <span> <input required type="date" th:field="${prenotazione.dataInserimento}"></span>
-			<span th:if="${#fields.hasErrors('dataInserimento')}" th:errors="*{dataInserimento}"></span>
+			<span th:if="${#fields.hasErrors('dataInserimento')}" th:errors="*{dataInserimento}">errore</span>
 		</div>
-		<div>
-			<span> <button type="submit">Conferma</button></span>
-		</div>
-	</form>
-	</div>
-
+        <input type="submit" class="button" value="Conferma">
+      </form>
+    </div>
+  </div>
 </body>
-
 </html>

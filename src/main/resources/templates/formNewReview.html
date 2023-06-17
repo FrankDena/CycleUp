@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>New Review</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Review</title>
+  <link rel="stylesheet" href="style3.css">
 </head>
-
 <body>
-
-	<h1>Aggiungi una recensione</h1>
-	<form class="form" th:action="@{/reviews}" method="post" th:object="${review}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Aggiungi una recensione</header>
+      <form class="form" th:action="@{/reviews}" method="post" th:object="${review}">
+        <div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">errore</p>
 		</div>
-		<div>
+        <div>
 			Titolo: <span> <input class="roundInput" required type="text" th:field="${review.title}"></span>
-			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">errore</span>
 		</div>
 		<div>
 			Testo: <span> <input class="roundInput" required type="text" th:field="${review.text}"></span>
-			<span th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></span>
+			<span th:if="${#fields.hasErrors('text')}" th:errors="*{text}">errore</span>
 		</div>
 		<div>
 			Valutazione(0-5): <span> <input class="roundInput" required type="number"
 					th:field="${review.valutation}"></span>
 			<span th:if="${#fields.hasErrors('valutation')}" th:errors="*{valutation}"></span>
 		</div>
-		<div>
-			<span> <button class="hero-btn" type="submit">Conferma</button></span>
-		</div>
-	</form>
-	</div>
-
+        <input type="submit" class="button" value="Conferma">
+      </form>
+      <div class="signup">
+      </div>
+    </div>
 </body>
-
 </html>

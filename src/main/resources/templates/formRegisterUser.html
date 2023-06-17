@@ -1,43 +1,24 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Registrazione</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="style2.css">
 </head>
-
 <body>
-	<div>
-		<h1>Registrazione</h1>
-		<form th:action="@{/register}" method="post">
-			<div>
-				<input placeholder="Username" type="text" required th:field="${credentials.username}">
-				
-			</div>
-			<div>
-				<input type="password" placeholder="Password" required th:field="${credentials.password}">
-				
-			</div>
-			<div>
-				<input type="text" placeholder="Nome" required th:field="${user.name}">
-				
-			</div>
-			<div >
-				<input type="text" placeholder="Cognome" required th:field="${user.surname}">
-				
-			</div>
-			<div >
-				<input type="text" placeholder="Email" required th:field="${user.email}">
-				
-			</div>
-
-			<div>
-				<input type="submit" value="Conferma">
-			</div>
-
-		</form>
-	</div>
-
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Register</header>
+     <form th:action="@{/register}" method="post">
+       <input placeholder="Username" type="text" required th:field="${credentials.username}">
+       <input type="password" placeholder="Password" required th:field="${credentials.password}">
+       <input type="text" placeholder="Nome" required th:field="${user.name}">
+       <input type="text" placeholder="Cognome" required th:field="${user.surname}">
+       <input type="text" placeholder="Email" required th:field="${user.email}">
+        <input type="submit" class="button" value="Conferma">
+      </form>
+    </div>
 </body>
-
 </html>
