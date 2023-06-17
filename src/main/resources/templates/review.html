@@ -11,7 +11,6 @@
 			<div>Testo: <span th:text="${review.text}">Testo</span></div>
 			<div>Valutation: <span th:text="${review.valutation}">Valutation</span></div>
 			<div th:text="'Relativa alla prestazione numero ' + ${review.prestazione.id} + ' del giorno ' + ${review.prestazione.dataCompletamento}">Prestazione id</div>
-			<div th:if="${review.username}" >Inserita da: <span th:text="${review.username}">Utente</span></div>
 		</div>
 	</body>
 </html>

@@ -2,6 +2,8 @@ package it.uniroma3.cu.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import it.uniroma3.cu.model.Credentials;
 import it.uniroma3.cu.model.Prenotazione;
 import it.uniroma3.cu.model.Prestazione;
+import it.uniroma3.cu.model.User;
 import it.uniroma3.cu.service.CredentialsService;
 import it.uniroma3.cu.service.PrenotazioneService;
 import it.uniroma3.cu.service.PrestazioneService;
@@ -42,11 +46,16 @@ public class PrestazioneController {
 		Prenotazione prenotazione = this.prenotazioneService.findById(idPren);
 		Prestazione prestazione = this.prestazioneService.findById(idPres);
 		
+		User cliente = prenotazione.getCliente();
+		prestazione.setCliente(cliente);
+		cliente.getPrestazioni().add(prestazione);
+		
 		prestazione.setPrenotazione(prenotazione);
 		prenotazione.setPrestazione(prestazione);
 		
 		this.prenotazioneService.savePrenotazione(prenotazione);
 		this.prestazioneService.savePrestazione(prestazione);
+		this.userService.saveUser(cliente);
 		
 		model.addAttribute("prestazione",prestazione);
 		return "prestazione.html";
@@ -80,7 +89,15 @@ public class PrestazioneController {
 	
 	@GetMapping("/prestazioni")
 	public String showPrestazioni(Model model) {
-		model.addAttribute("prestazioni",this.prestazioneService.findAll());
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		User cliente = credentials.getUser();
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("prestazioni",this.prestazioneService.findAll());
+		}
+		else {
+			model.addAttribute("prestazioni",this.prestazioneService.findAllByCliente(cliente));
+		}
 		return "prestazioni.html";
 	}
 	

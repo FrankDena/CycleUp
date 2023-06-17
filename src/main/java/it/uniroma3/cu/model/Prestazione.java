@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -22,6 +23,9 @@ public class Prestazione {
 	
 	@OneToOne 
 	private Review recensione;
+	
+	@ManyToOne
+	private User cliente;
 	
 	private Float prezzoFinale;
 	
@@ -41,6 +45,14 @@ public class Prestazione {
 	
 	
 
+
+	public User getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(User cliente) {
+		this.cliente = cliente;
+	}
 
 	public LocalDate getDataCompletamento() {
 		return dataCompletamento;

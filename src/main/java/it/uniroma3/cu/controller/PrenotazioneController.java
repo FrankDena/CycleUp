@@ -119,7 +119,15 @@ public class PrenotazioneController {
 	
 	@GetMapping("/prenotazioni")
 	public String showPrenotazioni(Model model) {
-		model.addAttribute("prenotazioni",this.prenotazioneService.findAll());
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		User cliente = credentials.getUser();
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("prenotazioni",this.prenotazioneService.findAll());
+		}
+		else {
+			model.addAttribute("prenotazioni",this.prenotazioneService.findAllByCliente(cliente));
+		}
 		return "prenotazioni.html";
 	}
 }

@@ -1,5 +1,7 @@
 package it.uniroma3.cu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,10 @@ public class PrenotazioneService {
 	
 	public void deleteById(Long id) {
 		this.prenotazioneRepository.deleteById(id);
+	}
+
+	public List<Prenotazione> findAllByCliente(User cliente) {
+		return this.prenotazioneRepository.findAllByCliente(cliente);
 	}
 	
 

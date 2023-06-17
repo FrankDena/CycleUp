@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import it.uniroma3.cu.model.Prenotazione;
 import it.uniroma3.cu.model.Prestazione;
 import it.uniroma3.cu.model.Review;
+import it.uniroma3.cu.model.User;
+import it.uniroma3.cu.service.CredentialsService;
 import it.uniroma3.cu.service.PrestazioneService;
 import it.uniroma3.cu.service.ReviewService;
 import jakarta.validation.Valid;
@@ -25,6 +27,7 @@ public class ReviewController {
 	@Autowired ReviewValidator reviewValidator;
 	@Autowired ReviewService reviewService;
 	@Autowired PrestazioneService prestazioneService;
+	@Autowired CredentialsService credentialsService;
 	
 	@GetMapping("/formNewReview")
 	public String formNewReviewDefault(Model model) {
@@ -49,7 +52,9 @@ public class ReviewController {
 	
 	@GetMapping("/selectPrestazione/{id}")
 	public String selectPrestazione(@PathVariable("id")Long id, Model model) {
-		model.addAttribute("prestazioni",this.prestazioneService.findAll());
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		User user = credentialsService.getCredentials(username).getUser();
+		model.addAttribute("prestazioni",this.prestazioneService.findAllByCliente(user));
 		model.addAttribute("recensione",this.reviewService.findById(id));
 		return "selectPrestazione.html";
 	}
