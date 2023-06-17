@@ -13,11 +13,39 @@
 	<a href="/servizi">Visualizza tutti i servizi</a>
 	<div th:if="${user}">
 		<span th:text="${user.username}"></span>
+=======
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Homepage</title>
+    <link rel="stylesheet" href="style1.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h2 class="logo"><a href="/">CYCLEUP</a></h2>
+        <ul class="all-links">
+          <li><a href="/reviews">Tutte le recensioni</a></li>
+           <li><a href="/servizi">Tutti i servizi</a></li>
+        </ul>
+        <div class="all-links" th:if="${user}">
+		<span class="username" th:text="${user.username}"></span>
+>>>>>>> c70ed07ab9578cb8c7d13d83890f6121fbb41a9d
 		<a href="/logout">LOGOUT</a>
-	</div>
-	<div th:unless="${user}">
-		<a href="/login">LOGIN</a>
-	</div>
-</body>
-
-</html>
+	  </div>
+      <div class="all-links" th:unless="${user}">
+          <a href="/login">LOGIN</a>
+      </div>
+      </nav>
+    </header>
+    <section class="homepage">
+      <div class="content">
+        <div class="text">
+          <h1>Offriamo servizi di riparazione e manutenzione bici</h1>
+          <p>
+            Vedi <i>tutti i servizi</i> disponibili e prenotane subito uno per la tua bicicletta!</p>
+        </div>
+      </div>
+    </section>
+  </body>
