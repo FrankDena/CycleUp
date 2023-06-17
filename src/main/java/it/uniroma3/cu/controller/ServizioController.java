@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import it.uniroma3.cu.model.Review;
 import it.uniroma3.cu.model.Servizio;
 import it.uniroma3.cu.service.ServizioService;
 import jakarta.validation.Valid;
@@ -51,6 +51,45 @@ public class ServizioController {
 	public String showServizi(Model model) {
 		model.addAttribute("servizi",this.servizioService.findAll());
 		return "servizi.html";
+	}
+	
+	@GetMapping("/admin/manageServizi")
+	public String manageServizi(Model model) {
+		model.addAttribute("servizi", this.servizioService.findAll());
+		return "admin/manageServizi.html";
+	}
+	
+	@GetMapping("/admin/formUpdateServizio/{id}")
+	public String formUpdateServizio (@PathVariable("id")Long id, Model model) {
+		model.addAttribute("servizio",this.servizioService.findById(id));
+		return "admin/formUpdateServizio.html";
+	}
+	
+	@PostMapping("/editTitle/{id}")
+	public String editTitle(@PathVariable("id") Long id, Model model,@RequestParam String title) {
+		Servizio servizio = this.servizioService.findById(id);
+		servizio.setTitle(title);
+		this.servizioService.saveServizio(servizio);
+		model.addAttribute("servizio",this.servizioService.findById(id));
+		return "admin/formUpdateServizio.html";
+	}
+	
+	@PostMapping("/editDescription/{id}")
+	public String editDescription(@PathVariable("id") Long id, Model model,@RequestParam String description) {
+		Servizio servizio = this.servizioService.findById(id);
+		servizio.setDescription(description);
+		this.servizioService.saveServizio(servizio);
+		model.addAttribute("servizio",this.servizioService.findById(id));
+		return "admin/formUpdateServizio.html";
+	}
+	
+	@PostMapping("/editPrice/{id}")
+	public String editPrice(@PathVariable("id") Long id, Model model,@RequestParam Float price) {
+		Servizio servizio = this.servizioService.findById(id);
+		servizio.setPrice(price);
+		this.servizioService.saveServizio(servizio);
+		model.addAttribute("servizio",this.servizioService.findById(id));
+		return "admin/formUpdateServizio.html";
 	}
 	
 }
