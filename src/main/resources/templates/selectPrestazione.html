@@ -4,19 +4,19 @@
 <head>
 	<title>Seleziona Prestazione</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<link rel="stylesheet" href="/card.css">
 </head>
 
-<body>
+<body id="general">
 	<h1>Seleziona la prestazione a cui aggiungere la nuova recensione:</h1>
 	<div th:if="${prestazioni.isEmpty()}">Non ci sono prestazioni nel sistema</div>
-		<ul>
-			<li th:each="prestazione:${prestazioni}">
-				<a th:href="@{'/setPrestazioneToRecensione'+'/'+${prestazione.id}+'/'+${recensione.id}}"
-				th:text="${prestazione.prenotazione.modelloBici} + ' ' + ${prestazione.prezzoFinale} + '€'">Prestazione</a>
-			</li>
-		</ul>
-
+    <div class="grid-container">
+        <div th:each="prestazione: ${prestazioni}" class="grid-item">
+            <a th:href="@{'/prestazioni'+'/'+${prestazione.id}}">
+                <p th:text="${prestazione.prenotazione.modelloBici} + ' ' + ' (' + ${prestazione.prezzoFinale} + ' &euro;)'">Place</p>
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>

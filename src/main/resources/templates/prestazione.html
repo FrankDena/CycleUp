@@ -3,18 +3,18 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Prenotazione</title>
+	<title>Prestazione</title>
+	<link rel="stylesheet" href="/card.css">
 </head>
 
-<body>
-	<div th:if="${prestazione}">
+<body id="prenotazione">
+	<div class="container" th:if="${prestazione}">
 		<h1 th:text="'Prestazione ' + ${prestazione.id}">Prestazione</h1>
-		
 		<div th:text="'Relativa alla prenotazione numero ' + ${prestazione.prenotazione.id}">Prenotazione id</div>
 		<a th:href="@{'/prenotazioni'+'/'+${prestazione.prenotazione.id}}"
 				th:text="'Visualizza prenotazione'">Prenotazione</a>
-		<div>Prezzo Finale = <span th:text="${prestazione.prezzoFinale} + '€'">Prezzo </span></div>
-		<div>Prezzo dei ricambi = <span th:text="${prestazione.prezzoRicambi} + '€'">Prezzo </span></div>
+		<div>Prezzo Finale = <span th:text="${prestazione.prezzoFinale} + ' €'">Prezzo </span></div>
+		<div>Prezzo dei ricambi = <span th:text="${prestazione.prezzoRicambi} + ' €'">Prezzo </span></div>
 		<div>Ore di manodopera: <span th:text="${prestazione.oreManodopera}">Ore </span></div>
 		<div>Data di completamento: <span th:text="${prestazione.dataCompletamento}">Data </span></div>
 	</div>

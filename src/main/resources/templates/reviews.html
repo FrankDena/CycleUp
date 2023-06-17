@@ -2,21 +2,29 @@
 <html>
 
 <head>
-	<title>New Review</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Recensioni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/card.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
-
-	<div th:if="${reviews.isEmpty()}">Non ci sono recensioni nel sistema</div>
-		<ul>
-			<li class="operation-col" th:each="review:${reviews}">
-				<a th:href="@{'/reviews'+'/'+${review.id}}"
-				th:text="${review.title}+'('+${review.valutation}+')'">Recensione (valutazione)</a>
-			</li>
-		</ul>
-
+<body id="reviews" >
+    <center>
+        <h1>Recensioni</h1>
+    </center>
+    <div th:if="${reviews.isEmpty()}">Non ci sono recensioni nel sistema</div>
+    <div class="grid-container">
+        <div th:each="review:${reviews}" class="grid-item">
+            <a th:href="@{'/reviews'+'/'+${review.id}}">
+                <p th:text="${review.title}">Place</p>
+            </a>
+            <div>
+				<span th:each="i : ${#numbers.sequence(1, review.valutation)}">
+			    <i class="fa fa-star checked"></i>
+			</span>
+			</div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -2,21 +2,24 @@
 <html>
 
 <head>
-	<title>Modifica servizio</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Modifica servizio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/card.css">
 </head>
 
 <body>
-	<h1>Seleziona un servizio da modificare</h1>
-	<div th:if="${servizi.isEmpty()}">Non ci sono servizi nel sistema</div>
-		<ul>
-			<li th:each="servizio:${servizi}">
-				<a th:href="@{'/admin/formUpdateServizio'+'/'+${servizio.id}}"
-				th:text="${servizio.title}+'('+${servizio.price}+')'">Servizio (prezzo)</a>
-			</li>
-		</ul>
-
+    <h1>Seleziona un servizio da modificare</h1>
+    <div th:if="${servizi.isEmpty()}">Non ci sono servizi nel sistema</div>
+    <div class="grid-container">
+        <div th:each="servizio: ${servizi}" class="grid-item">
+            <a th:href="@{'/admin/formUpdateServizio'+'/'+${servizio.id}}">
+                <h2 th:text="${servizio.title}">Titolo</h2>
+               </a>
+              <div>
+                <p th:text="'Prezzo: ' + ${servizio.price} + ' &euro;'"></p>
+              </div>
+        </div>
+    </div>
 </body>
 
 </html>

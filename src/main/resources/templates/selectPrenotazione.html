@@ -4,19 +4,19 @@
 <head>
 	<title>Seleziona Prenotazione</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<link rel="stylesheet" href="/card.css">
 </head>
 
-<body>
-
+<body id="general">
+	<h1>Seleziona la prenotazione da aggiungere alla prestazione:</h1>
 	<div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni nel sistema</div>
-		<ul>
-			<li th:each="prenotazione:${prenotazioni}">
-				<a th:href="@{'/setPrenotazioneToPrestazione'+'/'+${prenotazione.id}+'/'+${prestazione.id}}"
-				th:text="${prenotazione.modelloBici} + ' ' + ${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Prenotazione)</a>
-			</li>
-		</ul>
-
+    <div class="grid-container">
+        <div th:each="prenotazione:${prenotazioni}" class="grid-item">
+            <a th:href="@{'/setPrenotazioneToPrestazione'+'/'+${prenotazione.id}+'/'+${prestazione.id}}">
+                <p th:text="${prenotazione.modelloBici} + ' ' + ${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Place</p>
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>

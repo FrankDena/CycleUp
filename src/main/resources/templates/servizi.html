@@ -2,21 +2,23 @@
 <html>
 
 <head>
-	<title>New Review</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Servizi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/card.css" />
 </head>
 
 <body>
-
-	<div th:if="${servizi.isEmpty()}">Non ci sono servizi nel sistema</div>
-		<ul>
-			<li class="operation-col" th:each="servizio:${servizi}">
-				<a th:href="@{'/servizi'+'/'+${servizio.id}}"
-				th:text="${servizio.title}+'('+${servizio.price}+')'">Servizio (prezzo)</a>
-			</li>
-		</ul>
-
+    <center>
+        <h1>Servizi</h1>
+    </center>
+    <div th:if="${servizi.isEmpty()}">Non ci sono servizi nel sistema</div>
+    <div class="grid-container">
+        <div th:each="servizio:${servizi}" class="grid-item">
+            <a th:href="@{'/servizi'+'/'+${servizio.id}}">
+                <p th:text="${servizio.title}+' ('+${servizio.price}+' &euro;)'">Place</p>
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>

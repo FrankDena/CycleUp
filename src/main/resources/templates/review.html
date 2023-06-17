@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Inserisci una recensione</title>
-	</head>
-	
-	<body>
-		<div th:if="${review}">
-			<h1 th:text="${review.title}">Titolo Recensione</h1>
-			<div>Testo: <span th:text="${review.text}">Testo</span></div>
-			<div>Valutation: <span th:text="${review.valutation}">Valutation</span></div>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recensione</title>
+	<link rel="stylesheet" href="/card.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="prenotazione">
+	<div class="container" th:if="${review}">
+		<h1 th:text="${review.title}">Titolo Recensione</h1>
+		<div>Testo: <span th:text="${review.text}">Testo</span></div>
+			<div>Valutation: <span th:each="i : ${#numbers.sequence(1, review.valutation)}">
+			    <i class="fa fa-star checked"></i>
+			</span></div>
 			<div th:text="'Relativa alla prestazione numero ' + ${review.prestazione.id} + ' del giorno ' + ${review.prestazione.dataCompletamento}">Prestazione id</div>
-		</div>
-	</body>
+	</div>
+</body>
+
 </html>

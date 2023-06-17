@@ -2,21 +2,23 @@
 <html>
 
 <head>
-	<title>Prenotazioni</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel = "stylesheet" href="/css/style.css" />
+    <title>Prenotazioni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/card.css" />
 </head>
 
-<body>
-	<center><titolo>Prenotazioni</titolo></center>
-	<div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni nel sistema</div>
-		<ul>
-			<li class="operation-col" th:each="prenotazione:${prenotazioni}">
-				<a th:href="@{'/prenotazioni'+'/'+${prenotazione.id}}"
-				th:text="${prenotazione.modelloBici} + ' | ' + ${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Prenotazione)</a>
-			</li>
-		</ul>
-
+<body id="prens">
+    <center>
+        <h1>Prenotazioni</h1>
+    </center>
+    <div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni nel sistema</div>
+    <div class="grid-container">
+        <div th:each="prenotazione: ${prenotazioni}" class="grid-item">
+            <a th:href="@{'/prenotazioni'+'/'+${prenotazione.id}}">
+                <p th:text="${prenotazione.modelloBici + ' | ' + prenotazione.cliente.name + ' ' + prenotazione.cliente.surname}">Place</p>
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>
