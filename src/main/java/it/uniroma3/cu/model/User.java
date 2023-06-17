@@ -21,12 +21,23 @@ public class User {
 	@OneToMany
 	private List<Prenotazione> prenotazioni;
 	
+	@OneToMany
+	private List<Prestazione> prestazioni;
+	
 	private String name;
 	private String surname;
 	private String email;
 	
 	
 	
+	
+	
+	public List<Prestazione> getPrestazioni() {
+		return prestazioni;
+	}
+	public void setPrestazioni(List<Prestazione> prestazioni) {
+		this.prestazioni = prestazioni;
+	}
 	public List<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}

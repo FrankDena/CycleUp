@@ -30,7 +30,6 @@ public class Review {
 	
 	private String text;
 	
-	private String username;
 	
 	@OneToOne (mappedBy = "recensione")
 	private Prestazione prestazione;
@@ -44,12 +43,7 @@ public class Review {
 	public void setPrestazione(Prestazione prestazione) {
 		this.prestazione = prestazione;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 	
 	public Long getId() {
 		return id;

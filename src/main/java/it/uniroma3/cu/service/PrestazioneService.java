@@ -1,9 +1,12 @@
 package it.uniroma3.cu.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.cu.model.Prestazione;
+import it.uniroma3.cu.model.User;
 import it.uniroma3.cu.repository.PrestazioneRepository;
 
 
@@ -29,6 +32,8 @@ public class PrestazioneService {
 		this.prestazioneRepository.deleteById(id);
 	}
 	
-	
+	public List<Prestazione> findAllByCliente(User cliente) {
+		return this.prestazioneRepository.findAllByCliente(cliente);
+	}
 	
 }

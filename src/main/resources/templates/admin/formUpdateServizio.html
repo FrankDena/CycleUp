@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Modifica servizio</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+	<h1>Modifica il servizio</h1>
+	<div>
+		<form th:action="@{'/editTitle'+'/'+${servizio.id}}" method="post">
+			<label>Modifica titolo:</label> <input required type="text" th:value="${title}" name="title" />
+			<button type="submit">Modifica</button>
+		</form>
+	</div>
+	<div>
+		<form th:action="@{'/editDescription'+'/'+${servizio.id}}" method="post">
+			<label>Modifica descrizione:</label> <input required type="text" th:value="${description}" name="description" />
+			<button type="submit">Modifica</button>
+		</form>
+	</div>
+	<div>
+		<form th:action="@{'/editPrice'+'/'+${servizio.id}}" method="post">
+			<label>Modifica prezzo:</label> <input required type="text" th:value="${price}" name="price" />
+			<button type="submit">Modifica</button>
+		</form>
+	</div><br>
+	<div>
+		<a th:href="@{'/servizi'+'/'+${servizio.id}}">Visualizza servizio aggiornato</a>
+	</div>
+
+</body>
+
+</html>
