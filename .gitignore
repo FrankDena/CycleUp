@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+src/main/resources/templates/index.html
+*.html
+src/main/resources/templates/index.html
+*.html
+src/main/resources/templates/index.html
+*.html
+*.html

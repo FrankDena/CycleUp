@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>HomePage</title>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Homepage</title>
+  <link rel="stylesheet" href="style1.css">
 </head>
-
 <body>
-	<h1>UTENTE REGISTRATO</h1>
-	<h1>Scegli quale operazione effettuare</h1>
-	<a href="/formNewReview">Inserisci una recensione</a>
-	<a href="/reviews">Visualizza tutte le recensioni</a>
-	<a href="/servizi">Visualizza tutti i servizi</a>
-	<a href="/formNewPrenotazione">Inserisci una prenotazione</a>
-	<a href="/prenotazioni">Visualizza tutte le prenotazioni</a>
-	<a href="/prestazioni">Visualizza tutte le prestazioni</a>
-	<div th:if="${user}">
-		<span th:text="${user.username}"></span>
+  <header>
+      <nav class="navbar">
+        <h2 class="logo"><a href="/">CYCLEUP</a></h2>
+        <div class="all-links" th:if="${user}">
+		<span class="username" th:text="${user.username}"></span>
 		<a href="/logout">LOGOUT</a>
-	</div>
-	<div th:unless="${user}">
-		<a href="/login">LOGIN</a>
-	</div>
+	  </div>
+      <div class="all-links" th:unless="${user}">
+          <a href="/login">LOGIN</a>
+      </div>
+      </nav>
+    </header>
+  <section class="homepage">
+    <br>
+  <div class="grid-container">
+    <div class="grid-item">
+      <a href="/formNewReview">Nuova recensione</a>
+    </div>
+    <div class="grid-item">
+      <a href="/reviews">Tutte le recensioni</a>
+    </div>
+    <div class="grid-item">
+      <a href="/servizi">Tutti i servizi</a>
+    </div>
+    <div class="grid-item">
+      <a href="/formNewPrenotazione">Inserisci prenotazione</a>
+    </div>
+    <div class="grid-item">
+      <a href="/prenotazioni">Tutte le tue prenotazioni</a>
+    </div>
+    <div class="grid-item">
+      <a href="/prestazioni">Tutte le tue prestazioni</a>
+    </div>
+  </div>
+    </section>
 </body>
-
 </html>
