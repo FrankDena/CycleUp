@@ -12,6 +12,10 @@
         <h1>Prenotazioni</h1>
     </center>
     <div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni nel sistema</div>
+    <br>
+    <div id="button">
+    <a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+    </div>
     <div class="grid-container">
         <div th:each="prenotazione: ${prenotazioni}" class="grid-item">
             <a th:href="@{'/prenotazioni'+'/'+${prenotazione.id}}">

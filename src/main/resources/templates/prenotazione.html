@@ -9,6 +9,9 @@
 
 <body id="prenotazione">
 	<div class="container" th:if="${prenotazione}">
+		<div id="button">
+    	<a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+   		</div>
 		<h1 th:text="'Prenotazione ' + ${prenotazione.id}">Prenotazione</h1>
 		<div>Cliente: <span th:text="${prenotazione.cliente.name} + ' ' + ${prenotazione.cliente.surname}">Nome Cognome</span></div>
 		<div>Bici: <span th:text="${prenotazione.modelloBici}">Bici </span></div>

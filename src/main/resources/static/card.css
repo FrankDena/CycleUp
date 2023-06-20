@@ -3,6 +3,14 @@
   color:  #fff;
 }
 
+.btnlnk {
+	color: black;
+}
+
+#button {
+	text-align: center;
+}
+
 body {
   min-height: 100vh;
   width: 100%;

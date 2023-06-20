@@ -12,6 +12,10 @@
         <h1>Prestazioni</h1>
     </center>
     <div th:if="${prestazioni.isEmpty()}">Non ci sono prestazioni nel sistema</div>
+    <br>
+    <div id="button">
+    <a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+    </div>
     <div class="grid-container">
         <div th:each="prestazione: ${prestazioni}" class="grid-item">
             <a th:href="@{'/prestazioni'+'/'+${prestazione.id}}">

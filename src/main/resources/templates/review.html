@@ -10,6 +10,9 @@
 
 <body id="prenotazione">
 	<div class="container" th:if="${review}">
+		<div id="button">
+    	<a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+   		</div>
 		<h1 th:text="${review.title}">Titolo Recensione</h1>
 		<div>Testo: <span th:text="${review.text}">Testo</span></div>
 			<div>Valutation: <span th:each="i : ${#numbers.sequence(1, review.valutation)}">

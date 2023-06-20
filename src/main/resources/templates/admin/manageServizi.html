@@ -10,6 +10,10 @@
 <body>
     <h1>Seleziona un servizio da modificare</h1>
     <div th:if="${servizi.isEmpty()}">Non ci sono servizi nel sistema</div>
+    <br>
+    <div id="button">
+    <a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+    </div>
     <div class="grid-container">
         <div th:each="servizio: ${servizi}" class="grid-item">
             <a th:href="@{'/admin/formUpdateServizio'+'/'+${servizio.id}}">

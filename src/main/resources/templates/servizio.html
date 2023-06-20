@@ -10,6 +10,9 @@
 
 <body id="prenotazione">
 	<div class="container" th:if="${servizio}">
+		<div id="button">
+    	<a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+    	</div>
 		<h1 th:text="${servizio.title}">Titolo servizio</h1>
 			<div>Testo: <span th:text="${servizio.description}">Descrizione</span></div>
 			<div>Prezzo: <span th:text="${servizio.price}+' €'">Prezzo</span></div>

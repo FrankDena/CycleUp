@@ -9,6 +9,9 @@
 
 <body id="prenotazione">
 	<div class="container" th:if="${prestazione}">
+		<div id="button">
+    	<a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+   		</div>
 		<h1 th:text="'Prestazione ' + ${prestazione.id}">Prestazione</h1>
 		<div th:text="'Relativa alla prenotazione numero ' + ${prestazione.prenotazione.id}">Prenotazione id</div>
 		<a th:href="@{'/prenotazioni'+'/'+${prestazione.prenotazione.id}}"

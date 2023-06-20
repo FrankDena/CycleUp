@@ -12,6 +12,10 @@
         <h1>Servizi</h1>
     </center>
     <div th:if="${servizi.isEmpty()}">Non ci sono servizi nel sistema</div>
+    <br>
+    <div id="button">
+    <a href="/"> <button class="btnlnk" type="button">Torna alla homepage</button></a>
+    </div>
     <div class="grid-container">
         <div th:each="servizio:${servizi}" class="grid-item">
             <a th:href="@{'/servizi'+'/'+${servizio.id}}">
