@@ -12,7 +12,7 @@
 	<div th:if="${prestazioni.isEmpty()}">Non ci sono prestazioni nel sistema</div>
     <div class="grid-container">
         <div th:each="prestazione: ${prestazioni}" class="grid-item">
-            <a th:href="@{'/prestazioni'+'/'+${prestazione.id}}">
+            <a th:href="@{'/setPrestazioneToRecensione'+'/'+${prestazione.id}+'/'+${recensione.id}}">
                 <p th:text="${prestazione.prenotazione.modelloBici} + ' ' + ' (' + ${prestazione.prezzoFinale} + ' &euro;)'">Place</p>
             </a>
         </div>
