@@ -11,5 +11,7 @@ import it.uniroma3.cu.model.User;
 public interface PrenotazioneRepository extends CrudRepository<Prenotazione, Long> {
 
 	public List<Prenotazione> findAllByCliente(User cliente);
+	public boolean existsById(Long id);
+
 	
 }

@@ -21,7 +21,6 @@ import jakarta.validation.Valid;
 
 @Controller
 public class ReviewController {
-	//@Autowired ReviewRepository reviewRepository;
 	@Autowired ReviewValidator reviewValidator;
 	@Autowired ReviewService reviewService;
 	@Autowired PrestazioneService prestazioneService;

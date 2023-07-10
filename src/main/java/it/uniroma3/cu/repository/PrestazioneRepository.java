@@ -11,5 +11,6 @@ import it.uniroma3.cu.model.User;
 public interface PrestazioneRepository extends CrudRepository<Prestazione, Long> {
 
 	public List<Prestazione> findAllByCliente(User cliente);
+	public boolean existById(Long id);
 	
 }
