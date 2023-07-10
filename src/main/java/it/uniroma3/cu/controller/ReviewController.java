@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import it.uniroma3.cu.model.Prenotazione;
 import it.uniroma3.cu.model.Prestazione;
 import it.uniroma3.cu.model.Review;
 import it.uniroma3.cu.model.User;
@@ -31,8 +29,7 @@ public class ReviewController {
 	
 	@GetMapping("/formNewReview")
 	public String formNewReviewDefault(Model model) {
-		Review review = new Review();
-		model.addAttribute("review", review);
+		model.addAttribute("review", new Review());
 		return "formNewReview.html";
 	}
 	
@@ -45,7 +42,6 @@ public class ReviewController {
 			model.addAttribute("review",review);
 			return new ModelAndView("redirect:/selectPrestazione/"+review.getId());
 		} else {
-			//model.addAttribute("messaggioErrore","Questa review esiste gia'");
 			return new ModelAndView("formNewReview.html");
 		}
 	}
@@ -86,28 +82,6 @@ public class ReviewController {
 		model.addAttribute("reviews",this.reviewService.findAll());
 		return "reviews.html";
 	}
-	
-	@GetMapping("/index")
-	public String indexReview() {
-		return "indexReview.html";
-	}
-	
-	@GetMapping("/admin/indexReview")
-	public String indexReviewAdmin() {
-		return "admin/indexReview.html";
-	}
-		
-	@GetMapping("/admin/formDeleteReview")
-	public String formDeleteReview(Model model) {
-		model.addAttribute("reviews",this.reviewService.findAll());
-		return "admin/formDeleteReview.html";
-	}
-	
-	@GetMapping("/admin/deleteReview/{id}")
-	public String deleteReview(@PathVariable("id")Long id, Model model) {
-		this.reviewService.deleteById(id);
-		model.addAttribute("reviews",this.reviewService.findAll());
-		return "reviews.html";
-	}
+
 	
 }

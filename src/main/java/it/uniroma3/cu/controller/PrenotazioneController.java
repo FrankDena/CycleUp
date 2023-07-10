@@ -60,10 +60,9 @@ public class PrenotazioneController {
 	}
 	
 	@GetMapping("/addServiziToPrenotazione/{id}")
-	public String addActors(@PathVariable("id")Long id, Model model) {
+	public String addServizi(@PathVariable("id")Long id, Model model) {
 		List<Servizio> serviziNonScelti = this.servizioService.findAllByPrenotazioniNotContaining(this.prenotazioneService.findById(id));
 		List<Servizio> serviziScelti = this.prenotazioneService.findById(id).getServizi();
-		//actorsOut.removeAll(actorsIn);
 		model.addAttribute("serviziNonScelti",serviziNonScelti);
 		model.addAttribute("serviziScelti",serviziScelti);
 		model.addAttribute("prenotazione",this.prenotazioneService.findById(id));
@@ -83,7 +82,6 @@ public class PrenotazioneController {
 		
 		List<Servizio> serviziNonScelti = this.servizioService.findAllByPrenotazioniNotContaining(prenotazione);
 		List<Servizio> serviziScelti = prenotazione.getServizi();
-		//actorsOut.removeAll(actorsIn);
 		model.addAttribute("serviziNonScelti",serviziNonScelti);
 		model.addAttribute("serviziScelti",serviziScelti);
 		model.addAttribute("prenotazione",prenotazione);
@@ -103,7 +101,6 @@ public class PrenotazioneController {
 		
 		List<Servizio> serviziNonScelti = this.servizioService.findAllByPrenotazioniNotContaining(prenotazione);
 		List<Servizio> serviziScelti = prenotazione.getServizi();
-		//actorsOut.removeAll(actorsIn);
 		model.addAttribute("serviziNonScelti",serviziNonScelti);
 		model.addAttribute("serviziScelti",serviziScelti);
 		model.addAttribute("prenotazione",prenotazione);

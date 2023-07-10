@@ -1,6 +1,5 @@
 package it.uniroma3.cu.controller;
 
-import org.hibernate.annotations.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

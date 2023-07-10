@@ -35,7 +35,6 @@ public class ServizioController {
 			model.addAttribute("servizio",servizio);
 			return "servizio.html";
 		} else {
-			//model.addAttribute("messaggioErrore","Questa review esiste gia'");
 			return "admin/formNewServizio.html";
 		}
 	}
