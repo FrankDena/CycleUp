@@ -23,7 +23,7 @@ public class PrestazioneValidator implements Validator{
 	@Override
 	public void validate(Object o, Errors errors) {
 		Prestazione prestazione = (Prestazione)o;
-		if(prestazione.getId() != null && this.prestazioneRepository.existById(prestazione.getId()))
+		if(prestazione.getId() != null && this.prestazioneRepository.existsById(prestazione.getId()))
 			errors.reject("prestazione.duplicate");
 	}
 }

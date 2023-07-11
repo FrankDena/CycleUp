@@ -21,6 +21,7 @@ import jakarta.validation.Valid;
 
 @Controller
 public class ReviewController {
+	//@Autowired ReviewRepository reviewRepository;
 	@Autowired ReviewValidator reviewValidator;
 	@Autowired ReviewService reviewService;
 	@Autowired PrestazioneService prestazioneService;
@@ -81,6 +82,5 @@ public class ReviewController {
 		model.addAttribute("reviews",this.reviewService.findAll());
 		return "reviews.html";
 	}
-
 	
 }
